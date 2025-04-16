@@ -2,7 +2,9 @@
 
 Aplicação web que permite gerar queries SQL a partir de perguntas em linguagem natural usando IA.
 
-![Página inicial da aplicação](inicial-page.png)
+<div align="center">
+  <img src="inicial-page.png" alt="Página inicial da aplicação" width="400" />
+</div>
 
 ## Pré-requisitos
 
