@@ -1,0 +1,199 @@
+[
+    {
+        "id": "test_001",
+        "question": "List all active patients with low risk, sorted in alphabetical order.",
+        "api_response": {
+            "query": "SELECT name FROM core_patient WHERE is_active = TRUE AND risk = 'low' ORDER BY name ASC;",
+            "results": []
+        },
+        "error": null
+    },
+    {
+        "id": "test_002",
+        "question": "List the IP addresses of all registered devices.",
+        "api_response": {
+            "query": "SELECT ip FROM core_equipment;",
+            "results": [
+                {
+                    "ip": "192.168.88.253"
+                },
+                {
+                    "ip": "10.0.2.4"
+                },
+                {
+                    "ip": "10.1.1.1"
+                },
+                {
+                    "ip": "127.0.0.1"
+                },
+                {
+                    "ip": "10.0.1.7"
+                },
+                {
+                    "ip": "10.1.1.3"
+                },
+                {
+                    "ip": "11.0.0.6"
+                },
+                {
+                    "ip": "10.0.2.3"
+                },
+                {
+                    "ip": "10.0.1.5"
+                },
+                {
+                    "ip": "10.0.2.2"
+                },
+                {
+                    "ip": "192.168.88.251"
+                }
+            ]
+        },
+        "error": null
+    },
+    {
+        "id": "test_003",
+        "question": "List the IP addresses of all devices that are currently active — meaning devices that have not been deleted.",
+        "api_response": {
+            "query": "SELECT ip FROM core_equipment WHERE is_deleted = false;",
+            "results": [
+                {
+                    "ip": "192.168.88.253"
+                },
+                {
+                    "ip": "10.0.2.4"
+                },
+                {
+                    "ip": "10.0.2.3"
+                },
+                {
+                    "ip": "10.0.1.5"
+                },
+                {
+                    "ip": "10.0.2.2"
+                },
+                {
+                    "ip": "192.168.88.251"
+                }
+            ]
+        },
+        "error": null
+    },
+    {
+        "id": "test_004",
+        "question": "List the IP addresses, bed numbers, and department names of all active devices.",
+        "api_response": {
+            "query": "SELECT\n    e.ip AS ip,\n    b.name AS bed_number,\n    d.name AS department_name\nFROM\n    core_equipment e\nINNER JOIN\n    core_bed b ON e.bed_id = b.id\nINNER JOIN\n    core_department d ON b.department_id = d.id\nWHERE\n    e.status NOT IN ('DELETED', 'INACTIVE')\nAND\n    b.is_active = TRUE;",
+            "results": [
+                {
+                    "ip": "10.0.2.2",
+                    "bed_number": "P02",
+                    "department_name": "LAB"
+                },
+                {
+                    "ip": "10.0.1.5",
+                    "bed_number": "P05",
+                    "department_name": "LAB"
+                },
+                {
+                    "ip": "10.0.2.3",
+                    "bed_number": "P03",
+                    "department_name": "LAB"
+                },
+                {
+                    "ip": "11.0.0.6",
+                    "bed_number": "P06",
+                    "department_name": "LAB"
+                },
+                {
+                    "ip": "10.0.1.7",
+                    "bed_number": "P07",
+                    "department_name": "LAB"
+                },
+                {
+                    "ip": "10.0.2.4",
+                    "bed_number": "P04",
+                    "department_name": "LAB"
+                },
+                {
+                    "ip": "192.168.88.253",
+                    "bed_number": "P07",
+                    "department_name": "LAB"
+                },
+                {
+                    "ip": "192.168.88.251",
+                    "bed_number": "P01",
+                    "department_name": "Pronto-Socorro"
+                },
+                {
+                    "ip": "10.1.1.3",
+                    "bed_number": "P10",
+                    "department_name": "Pronto-Socorro"
+                },
+                {
+                    "ip": "127.0.0.1",
+                    "bed_number": "P09",
+                    "department_name": "Pronto-Socorro"
+                },
+                {
+                    "ip": "10.1.1.1",
+                    "bed_number": "P08",
+                    "department_name": "Pronto-Socorro"
+                }
+            ]
+        },
+        "error": null
+    },
+    {
+        "id": "test_005",
+        "question": "For all active devices in the 'LAB' department, show the IP address, bed, department, and the date and time of the latest real-time update, sorted by most recent first.",
+        "api_response": {
+            "query": "SELECT\n    E.ip AS ip,\n    B.name AS bed,\n    D.name AS department,\n    MR.created_at AS latest_update\nFROM\n    core_equipment E\nINNER JOIN\n    core_bed B ON E.bed_id = B.id\nINNER JOIN\n    core_department D ON B.department_id = D.id\nLEFT JOIN LATERAL (\n    SELECT *\n    FROM core_monitoringrealtime MR2\n    WHERE MR2.equipment_id = E.id\n    ORDER BY MR2.created_at DESC\n    LIMIT 1\n) MR ON TRUE\nWHERE\n    E.status NOT IN ('INACTIVE', 'OFFLINE')\n    AND D.name = 'LAB'\nORDER BY\n    MR.created_at DESC;",
+            "results": [
+                {
+                    "ip": "11.0.0.6",
+                    "bed": "P06",
+                    "department": "LAB",
+                    "latest_update": null
+                },
+                {
+                    "ip": "10.0.1.7",
+                    "bed": "P07",
+                    "department": "LAB",
+                    "latest_update": null
+                },
+                {
+                    "ip": "192.168.88.253",
+                    "bed": "P07",
+                    "department": "LAB",
+                    "latest_update": "2025-05-16T14:16:18.857967+00:00"
+                },
+                {
+                    "ip": "10.0.1.5",
+                    "bed": "P05",
+                    "department": "LAB",
+                    "latest_update": "2025-03-21T19:50:07.573417+00:00"
+                },
+                {
+                    "ip": "10.0.2.2",
+                    "bed": "P02",
+                    "department": "LAB",
+                    "latest_update": "2025-03-21T19:50:06.999820+00:00"
+                },
+                {
+                    "ip": "10.0.2.3",
+                    "bed": "P03",
+                    "department": "LAB",
+                    "latest_update": "2025-03-21T19:50:06.021697+00:00"
+                },
+                {
+                    "ip": "10.0.2.4",
+                    "bed": "P04",
+                    "department": "LAB",
+                    "latest_update": "2025-03-21T19:50:04.907420+00:00"
+                }
+            ]
+        },
+        "error": null
+    }
+]

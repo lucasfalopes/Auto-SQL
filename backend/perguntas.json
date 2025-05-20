@@ -1,0 +1,22 @@
+[
+    {
+      "id": "test_001",
+      "question": "List all active patients with low risk, sorted in alphabetical order."
+    },
+    {
+      "id": "test_002",
+      "question": "List the IP addresses of all registered devices."
+    },
+    {
+      "id": "test_003",
+      "question": "List the IP addresses of all devices that are currently active — meaning devices that have not been deleted."
+    },
+    {
+      "id": "test_004",
+      "question": "List the IP addresses, bed numbers, and department names of all active devices."
+    },
+    {
+      "id": "test_005",
+      "question": "For all active devices in the 'LAB' department, show the IP address, bed, department, and the date and time of the latest real-time update, sorted by most recent first."
+    }
+  ]

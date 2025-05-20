@@ -1,0 +1,99 @@
+[
+    {
+        "id": "test_001",
+        "question": "List all active patients with low risk, sorted in alphabetical order.",
+        "api_response": {
+            "query": "SELECT id, name FROM core_patient WHERE is_active = true AND risk = 'low' ORDER BY name ASC",
+            "results": []
+        },
+        "error": null
+    },
+    {
+        "id": "test_002",
+        "question": "List the IP addresses of all registered devices.",
+        "api_response": {
+            "query": "SELECT ip FROM core_equipment;",
+            "results": [
+                {
+                    "ip": "192.168.88.253"
+                },
+                {
+                    "ip": "10.0.2.4"
+                },
+                {
+                    "ip": "10.1.1.1"
+                },
+                {
+                    "ip": "127.0.0.1"
+                },
+                {
+                    "ip": "10.0.1.7"
+                },
+                {
+                    "ip": "10.1.1.3"
+                },
+                {
+                    "ip": "11.0.0.6"
+                },
+                {
+                    "ip": "10.0.2.3"
+                },
+                {
+                    "ip": "10.0.1.5"
+                },
+                {
+                    "ip": "10.0.2.2"
+                },
+                {
+                    "ip": "192.168.88.251"
+                }
+            ]
+        },
+        "error": null
+    },
+    {
+        "id": "test_003",
+        "question": "List the IP addresses of all devices that are currently active — meaning devices that have not been deleted.",
+        "api_response": {
+            "query": "SELECT DISTINCT ip FROM core_equipment WHERE is_deleted = false AND status NOT IN ('DELETED', 'INACTIVE');",
+            "results": [
+                {
+                    "ip": "10.0.2.3"
+                },
+                {
+                    "ip": "10.0.1.5"
+                },
+                {
+                    "ip": "192.168.88.253"
+                },
+                {
+                    "ip": "192.168.88.251"
+                },
+                {
+                    "ip": "10.0.2.2"
+                },
+                {
+                    "ip": "10.0.2.4"
+                }
+            ]
+        },
+        "error": null
+    },
+    {
+        "id": "test_004",
+        "question": "List the IP addresses, bed numbers, and department names of all active devices.",
+        "api_response": {
+            "detail": "Database programming error with query: 'SELECT e.ip AS ip_address, b.name AS bed_number, d.name AS department_name\nFROM core_equipment e\nINNER JOIN core_bed b ON e.bed_id = b.id\nINNER JOIN core_department d ON b.department_id = d.id\nWHERE e.is_active = TRUE AND b.is_active = TRUE AND d.is_deleted IS FALSE;'. Error: {'S': 'ERROR', 'V': 'ERROR', 'C': '42703', 'M': 'column e.is_active does not exist', 'H': 'Perhaps you meant to reference the column \"b.is_active\".', 'P': '200', 'F': 'parse_relation.c', 'L': '3723', 'R': 'errorMissingColumn'}"
+        },
+        "error": "Erro HTTP: 400 Client Error: Bad Request for url: http://localhost:8000/api/query"
+    },
+    {
+        "id": "test_005",
+        "question": "For all active devices in the 'LAB' department, show the IP address, bed, department, and the date and time of the latest real-time update, sorted by most recent first.",
+        "api_response": {
+            "query": "SELECT T1.ip, T2.name AS bed_name, T3.name AS dept_name, T4.created_at FROM core_equipment AS T1\nINNER JOIN core_bed AS T2 ON T1.bed_id = T2.id\nINNER JOIN core_department AS T3 ON T1.department_id = T3.id\nINNER JOIN core_monitoringrealtime AS T4 ON T1.id = T4.equipment_id AND T2.id = T4.bed_id\nWHERE T1.status = 'ACTIVE' AND T3.name = 'LAB'\nORDER BY T4.created_at DESC",
+            "results": []
+        },
+        "error": null
+    }
+]

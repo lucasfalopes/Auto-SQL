@@ -1,0 +1,285 @@
+[
+    {
+        "id": "test_001",
+        "question": "List all active patients with low risk, sorted in alphabetical order.",
+        "api_response": {
+            "query": "SELECT * FROM core_patient WHERE is_active = TRUE AND risk = 'LOW' ORDER BY name ASC;",
+            "results": [
+                {
+                    "id": 3,
+                    "name": "Paciente 03",
+                    "cpf": "1231231",
+                    "birth_date": null,
+                    "admission_date": "2023-09-29T17:03:46+00:00",
+                    "is_active": true,
+                    "created_at": "2023-06-21T18:40:36.678495+00:00",
+                    "updated_at": "2024-05-17T17:16:52.781003+00:00",
+                    "created_by_id": null,
+                    "blood_type": "AB+",
+                    "doctor_name": "Dr. Fransicano",
+                    "gender": "FEMININO",
+                    "height": 165.0,
+                    "weight": 62.0,
+                    "medical_release": "2023-09-29T17:03:46+00:00",
+                    "type": "PEDIATRICS",
+                    "is_deleted": false,
+                    "risk": "LOW",
+                    "urgency": "HIGH",
+                    "bed_id": 3
+                },
+                {
+                    "id": 4,
+                    "name": "Paciente 04",
+                    "cpf": "16150128789",
+                    "birth_date": null,
+                    "admission_date": "2023-11-15T03:00:00+00:00",
+                    "is_active": true,
+                    "created_at": "2023-09-28T19:19:47.707031+00:00",
+                    "updated_at": "2024-05-17T16:07:48.967712+00:00",
+                    "created_by_id": null,
+                    "blood_type": "B+",
+                    "doctor_name": "dr. Teste 3",
+                    "gender": "MASCULINO",
+                    "height": 60.0,
+                    "weight": 30.0,
+                    "medical_release": "2023-09-28T19:18:59+00:00",
+                    "type": "ADULT",
+                    "is_deleted": false,
+                    "risk": "LOW",
+                    "urgency": "HIGH",
+                    "bed_id": 4
+                },
+                {
+                    "id": 5,
+                    "name": "Paciente 05",
+                    "cpf": "",
+                    "birth_date": null,
+                    "admission_date": "2023-09-19T03:00:00+00:00",
+                    "is_active": true,
+                    "created_at": "2023-09-28T19:31:35.829836+00:00",
+                    "updated_at": "2023-09-28T19:31:35.829845+00:00",
+                    "created_by_id": 20,
+                    "blood_type": "B+",
+                    "doctor_name": "Dr. Fabricio",
+                    "gender": null,
+                    "height": null,
+                    "weight": null,
+                    "medical_release": "2023-09-28T19:28:33+00:00",
+                    "type": null,
+                    "is_deleted": false,
+                    "risk": "LOW",
+                    "urgency": "LOW",
+                    "bed_id": 5
+                },
+                {
+                    "id": 7,
+                    "name": "Paciente 07",
+                    "cpf": "",
+                    "birth_date": null,
+                    "admission_date": "2023-09-29T16:48:16+00:00",
+                    "is_active": true,
+                    "created_at": "2023-09-29T16:49:06.398777+00:00",
+                    "updated_at": "2024-10-10T23:19:23.225447+00:00",
+                    "created_by_id": 20,
+                    "blood_type": "B+",
+                    "doctor_name": "Dr. Fransicano",
+                    "gender": null,
+                    "height": 50.0,
+                    "weight": 5.0,
+                    "medical_release": "2023-09-29T16:49:03+00:00",
+                    "type": "NEONATAL",
+                    "is_deleted": false,
+                    "risk": "LOW",
+                    "urgency": "LOW",
+                    "bed_id": 7
+                },
+                {
+                    "id": 8,
+                    "name": "Paciente 08",
+                    "cpf": "123",
+                    "birth_date": "2023-06-23T00:00:00+00:00",
+                    "admission_date": "2023-04-12T03:00:00+00:00",
+                    "is_active": true,
+                    "created_at": "2023-06-23T14:13:39.885688+00:00",
+                    "updated_at": "2024-05-17T14:58:22.255019+00:00",
+                    "created_by_id": null,
+                    "blood_type": null,
+                    "doctor_name": "dr. Teste 8",
+                    "gender": "MASCULINO",
+                    "height": 0.0,
+                    "weight": 0.0,
+                    "medical_release": null,
+                    "type": "ADULT",
+                    "is_deleted": false,
+                    "risk": "LOW",
+                    "urgency": "LOW",
+                    "bed_id": 8
+                },
+                {
+                    "id": 9,
+                    "name": "Paciente 09",
+                    "cpf": "12334456",
+                    "birth_date": "2023-06-23T00:00:00+00:00",
+                    "admission_date": "2023-05-11T00:00:00+00:00",
+                    "is_active": true,
+                    "created_at": "2023-06-23T14:14:17.211599+00:00",
+                    "updated_at": "2023-06-23T14:14:17.211618+00:00",
+                    "created_by_id": null,
+                    "blood_type": "O-",
+                    "doctor_name": "dr. Teste 9",
+                    "gender": "MASCULINO",
+                    "height": 0.0,
+                    "weight": 0.0,
+                    "medical_release": null,
+                    "type": "PEDIATRICS",
+                    "is_deleted": false,
+                    "risk": "LOW",
+                    "urgency": "LOW",
+                    "bed_id": 9
+                },
+                {
+                    "id": 10,
+                    "name": "Paciente 10",
+                    "cpf": "99887766554",
+                    "birth_date": "1974-03-05T00:00:00+00:00",
+                    "admission_date": "2023-09-01T03:00:00+00:00",
+                    "is_active": true,
+                    "created_at": "2023-09-01T16:17:24.476455+00:00",
+                    "updated_at": "2024-01-19T14:40:54.674172+00:00",
+                    "created_by_id": null,
+                    "blood_type": "A+",
+                    "doctor_name": "dr. Teste 10",
+                    "gender": "MASCULINO",
+                    "height": 175.0,
+                    "weight": 78.0,
+                    "medical_release": "2023-09-01T03:00:00+00:00",
+                    "type": "ADULT",
+                    "is_deleted": false,
+                    "risk": "LOW",
+                    "urgency": "LOW",
+                    "bed_id": 10
+                }
+            ]
+        },
+        "error": null
+    },
+    {
+        "id": "test_002",
+        "question": "List the IP addresses of all registered devices.",
+        "api_response": {
+            "query": "SELECT ip FROM core_equipment;",
+            "results": [
+                {
+                    "ip": "192.168.88.253"
+                },
+                {
+                    "ip": "10.0.2.4"
+                },
+                {
+                    "ip": "10.1.1.1"
+                },
+                {
+                    "ip": "127.0.0.1"
+                },
+                {
+                    "ip": "10.0.1.7"
+                },
+                {
+                    "ip": "10.1.1.3"
+                },
+                {
+                    "ip": "11.0.0.6"
+                },
+                {
+                    "ip": "10.0.2.3"
+                },
+                {
+                    "ip": "10.0.1.5"
+                },
+                {
+                    "ip": "10.0.2.2"
+                },
+                {
+                    "ip": "192.168.88.251"
+                }
+            ]
+        },
+        "error": null
+    },
+    {
+        "id": "test_003",
+        "question": "List the IP addresses of all devices that are currently active — meaning devices that have not been deleted.",
+        "api_response": {
+            "query": "SELECT ip FROM core_equipment WHERE is_deleted = false AND status NOT IN ('OFFLINE', 'DISCONNECTED');",
+            "results": [
+                {
+                    "ip": "192.168.88.253"
+                },
+                {
+                    "ip": "10.0.2.4"
+                },
+                {
+                    "ip": "10.0.2.3"
+                },
+                {
+                    "ip": "10.0.1.5"
+                },
+                {
+                    "ip": "10.0.2.2"
+                },
+                {
+                    "ip": "192.168.88.251"
+                }
+            ]
+        },
+        "error": null
+    },
+    {
+        "id": "test_004",
+        "question": "List the IP addresses, bed numbers, and department names of all active devices.",
+        "api_response": {
+            "detail": "Database programming error with query: 'SELECT DISTINCT E.ip AS ip_address, B.name AS bed_number, D.name AS department_name\nFROM core_equipment E\nINNER JOIN core_bed B ON E.bed_id = B.id\nINNER JOIN core_department D ON B.department_id = D.id\nWHERE E.is_active AND B.is_active AND NOT E.is_deleted;'. Error: {'S': 'ERROR', 'V': 'ERROR', 'C': '42703', 'M': 'column e.is_active does not exist', 'H': 'Perhaps you meant to reference the column \"b.is_active\".', 'P': '209', 'F': 'parse_relation.c', 'L': '3723', 'R': 'errorMissingColumn'}"
+        },
+        "error": "Erro HTTP: 400 Client Error: Bad Request for url: http://localhost:8000/api/query"
+    },
+    {
+        "id": "test_005",
+        "question": "For all active devices in the 'LAB' department, show the IP address, bed, department, and the date and time of the latest real-time update, sorted by most recent first.",
+        "api_response": {
+            "query": "SELECT T1.ip, T2.name AS bed, T3.name AS department, MAX(T4.created_at) AS latest_update\nFROM core_equipment AS T1\nINNER JOIN core_bed AS T2 ON T1.bed_id = T2.id\nINNER JOIN core_department AS T3 ON T2.department_id = T3.id\nINNER JOIN core_monitoringrealtime AS T4 ON T1.id = T4.equipment_id\nWHERE T3.name = 'LAB' AND T1.status != 'INACTIVE'\nGROUP BY T1.ip, T2.id, T3.id\nORDER BY latest_update DESC;",
+            "results": [
+                {
+                    "ip": "192.168.88.253",
+                    "bed": "P07",
+                    "department": "LAB",
+                    "latest_update": "2025-05-16T14:16:18.857967+00:00"
+                },
+                {
+                    "ip": "10.0.1.5",
+                    "bed": "P05",
+                    "department": "LAB",
+                    "latest_update": "2025-03-21T19:50:07.573417+00:00"
+                },
+                {
+                    "ip": "10.0.2.2",
+                    "bed": "P02",
+                    "department": "LAB",
+                    "latest_update": "2025-03-21T19:50:06.999820+00:00"
+                },
+                {
+                    "ip": "10.0.2.3",
+                    "bed": "P03",
+                    "department": "LAB",
+                    "latest_update": "2025-03-21T19:50:06.021697+00:00"
+                },
+                {
+                    "ip": "10.0.2.4",
+                    "bed": "P04",
+                    "department": "LAB",
+                    "latest_update": "2025-03-21T19:50:04.907420+00:00"
+                }
+            ]
+        },
+        "error": null
+    }
+]

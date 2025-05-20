@@ -1,0 +1,80 @@
+[
+    {
+        "id": "test_001",
+        "question": "List all active patients with low risk, sorted in alphabetical order.",
+        "api_response": {
+            "query": "SELECT p.id, p.name\nFROM core_patient AS p\nINNER JOIN core_bed AS b ON p.bed_id = b.id\nWHERE p.is_active = true AND p.risk = 'low'\nORDER BY p.name ASC;",
+            "results": []
+        },
+        "error": null
+    },
+    {
+        "id": "test_002",
+        "question": "List the IP addresses of all registered devices.",
+        "api_response": {
+            "query": "SELECT ip FROM core_equipment;",
+            "results": [
+                {
+                    "ip": "192.168.88.253"
+                },
+                {
+                    "ip": "10.0.2.4"
+                },
+                {
+                    "ip": "10.1.1.1"
+                },
+                {
+                    "ip": "127.0.0.1"
+                },
+                {
+                    "ip": "10.0.1.7"
+                },
+                {
+                    "ip": "10.1.1.3"
+                },
+                {
+                    "ip": "11.0.0.6"
+                },
+                {
+                    "ip": "10.0.2.3"
+                },
+                {
+                    "ip": "10.0.1.5"
+                },
+                {
+                    "ip": "10.0.2.2"
+                },
+                {
+                    "ip": "192.168.88.251"
+                }
+            ]
+        },
+        "error": null
+    },
+    {
+        "id": "test_003",
+        "question": "List the IP addresses of all active devices.",
+        "api_response": {
+            "query": "SELECT DISTINCT ip FROM core_equipment WHERE status = 'active';",
+            "results": []
+        },
+        "error": null
+    },
+    {
+        "id": "test_004",
+        "question": "List the IP addresses, bed numbers, and department names of all active devices.",
+        "api_response": {
+            "detail": "Database programming error with query: 'SELECT eq.ip, bd.name AS bed_number, dp.name AS department_name\nFROM core_equipment eq\nINNER JOIN core_bed bd ON eq.bed_id = bd.id\nINNER JOIN core_department dp ON eq.department_id = dp.id\nWHERE eq.is_active AND bd.is_active AND dp.is_deleted IS NOT TRUE AND bd.is_deleted IS NOT TRUE;'. Error: {'S': 'ERROR', 'V': 'ERROR', 'C': '42703', 'M': 'column eq.is_active does not exist', 'H': 'Perhaps you meant to reference the column \"bd.is_active\".', 'P': '196', 'F': 'parse_relation.c', 'L': '3723', 'R': 'errorMissingColumn'}"
+        },
+        "error": "Erro HTTP: 400 Client Error: Bad Request for url: http://localhost:8000/api/query"
+    },
+    {
+        "id": "test_005",
+        "question": "For all active devices in the 'LAB' department, show the IP address, bed, department, and the date and time of the latest real-time update, sorted by most recent first.",
+        "api_response": {
+            "query": "SELECT\n    E.ip,\n    B.name AS bed,\n    D.name AS department,\n    MAX(MR.created_at) AS last_real_time_update\nFROM\n    core_equipment E\nINNER JOIN\n    core_bed B ON E.bed_id = B.id\nINNER JOIN\n    core_department D ON B.department_id = D.id\nLEFT JOIN LATERAL (\n    SELECT *\n    FROM core_monitoringrealtime MR\n    WHERE MR.equipment_id = E.id\n    ORDER BY MR.created_at DESC\n    LIMIT 1\n) MR ON TRUE\nWHERE\n    E.status = 'ACTIVE'\n    AND D.name = 'LAB'\nGROUP BY\n    E.ip,\n    B.name,\n    D.name\nORDER BY\n    last_real_time_update DESC;",
+            "results": []
+        },
+        "error": null
+    }
+]
