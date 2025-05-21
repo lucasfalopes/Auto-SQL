@@ -1,0 +1,701 @@
+[
+    {
+        "id": "test_001",
+        "question": "List all active patients with low risk, sorted in alphabetical order.",
+        "runs": [
+            {
+                "query": "SELECT p.*\nFROM core_patient AS p\nINNER JOIN core_bed AS b ON p.bed_id = b.id\nWHERE p.is_active = TRUE AND p.risk = 'low'\nORDER BY p.name ASC;",
+                "results": []
+            },
+            {
+                "query": "SELECT p.id, p.name\nFROM core_patient AS p\nINNER JOIN core_bed AS b ON p.bed_id = b.id\nWHERE p.is_active = TRUE AND p.risk = 'low'\nORDER BY p.name ASC;",
+                "results": []
+            },
+            {
+                "query": "SELECT * FROM core_patient WHERE is_active = TRUE AND risk = 'LOW' ORDER BY name ASC;",
+                "results": [
+                    {
+                        "id": 3,
+                        "name": "Paciente 03",
+                        "cpf": "1231231",
+                        "birth_date": null,
+                        "admission_date": "2023-09-29T17:03:46+00:00",
+                        "is_active": true,
+                        "created_at": "2023-06-21T18:40:36.678495+00:00",
+                        "updated_at": "2024-05-17T17:16:52.781003+00:00",
+                        "created_by_id": null,
+                        "blood_type": "AB+",
+                        "doctor_name": "Dr. Fransicano",
+                        "gender": "FEMININO",
+                        "height": 165.0,
+                        "weight": 62.0,
+                        "medical_release": "2023-09-29T17:03:46+00:00",
+                        "type": "PEDIATRICS",
+                        "is_deleted": false,
+                        "risk": "LOW",
+                        "urgency": "HIGH",
+                        "bed_id": 3
+                    },
+                    {
+                        "id": 4,
+                        "name": "Paciente 04",
+                        "cpf": "16150128789",
+                        "birth_date": null,
+                        "admission_date": "2023-11-15T03:00:00+00:00",
+                        "is_active": true,
+                        "created_at": "2023-09-28T19:19:47.707031+00:00",
+                        "updated_at": "2024-05-17T16:07:48.967712+00:00",
+                        "created_by_id": null,
+                        "blood_type": "B+",
+                        "doctor_name": "dr. Teste 3",
+                        "gender": "MASCULINO",
+                        "height": 60.0,
+                        "weight": 30.0,
+                        "medical_release": "2023-09-28T19:18:59+00:00",
+                        "type": "ADULT",
+                        "is_deleted": false,
+                        "risk": "LOW",
+                        "urgency": "HIGH",
+                        "bed_id": 4
+                    },
+                    {
+                        "id": 5,
+                        "name": "Paciente 05",
+                        "cpf": "",
+                        "birth_date": null,
+                        "admission_date": "2023-09-19T03:00:00+00:00",
+                        "is_active": true,
+                        "created_at": "2023-09-28T19:31:35.829836+00:00",
+                        "updated_at": "2023-09-28T19:31:35.829845+00:00",
+                        "created_by_id": 20,
+                        "blood_type": "B+",
+                        "doctor_name": "Dr. Fabricio",
+                        "gender": null,
+                        "height": null,
+                        "weight": null,
+                        "medical_release": "2023-09-28T19:28:33+00:00",
+                        "type": null,
+                        "is_deleted": false,
+                        "risk": "LOW",
+                        "urgency": "LOW",
+                        "bed_id": 5
+                    },
+                    {
+                        "id": 7,
+                        "name": "Paciente 07",
+                        "cpf": "",
+                        "birth_date": null,
+                        "admission_date": "2023-09-29T16:48:16+00:00",
+                        "is_active": true,
+                        "created_at": "2023-09-29T16:49:06.398777+00:00",
+                        "updated_at": "2024-10-10T23:19:23.225447+00:00",
+                        "created_by_id": 20,
+                        "blood_type": "B+",
+                        "doctor_name": "Dr. Fransicano",
+                        "gender": null,
+                        "height": 50.0,
+                        "weight": 5.0,
+                        "medical_release": "2023-09-29T16:49:03+00:00",
+                        "type": "NEONATAL",
+                        "is_deleted": false,
+                        "risk": "LOW",
+                        "urgency": "LOW",
+                        "bed_id": 7
+                    },
+                    {
+                        "id": 8,
+                        "name": "Paciente 08",
+                        "cpf": "123",
+                        "birth_date": "2023-06-23T00:00:00+00:00",
+                        "admission_date": "2023-04-12T03:00:00+00:00",
+                        "is_active": true,
+                        "created_at": "2023-06-23T14:13:39.885688+00:00",
+                        "updated_at": "2024-05-17T14:58:22.255019+00:00",
+                        "created_by_id": null,
+                        "blood_type": null,
+                        "doctor_name": "dr. Teste 8",
+                        "gender": "MASCULINO",
+                        "height": 0.0,
+                        "weight": 0.0,
+                        "medical_release": null,
+                        "type": "ADULT",
+                        "is_deleted": false,
+                        "risk": "LOW",
+                        "urgency": "LOW",
+                        "bed_id": 8
+                    },
+                    {
+                        "id": 9,
+                        "name": "Paciente 09",
+                        "cpf": "12334456",
+                        "birth_date": "2023-06-23T00:00:00+00:00",
+                        "admission_date": "2023-05-11T00:00:00+00:00",
+                        "is_active": true,
+                        "created_at": "2023-06-23T14:14:17.211599+00:00",
+                        "updated_at": "2023-06-23T14:14:17.211618+00:00",
+                        "created_by_id": null,
+                        "blood_type": "O-",
+                        "doctor_name": "dr. Teste 9",
+                        "gender": "MASCULINO",
+                        "height": 0.0,
+                        "weight": 0.0,
+                        "medical_release": null,
+                        "type": "PEDIATRICS",
+                        "is_deleted": false,
+                        "risk": "LOW",
+                        "urgency": "LOW",
+                        "bed_id": 9
+                    },
+                    {
+                        "id": 10,
+                        "name": "Paciente 10",
+                        "cpf": "99887766554",
+                        "birth_date": "1974-03-05T00:00:00+00:00",
+                        "admission_date": "2023-09-01T03:00:00+00:00",
+                        "is_active": true,
+                        "created_at": "2023-09-01T16:17:24.476455+00:00",
+                        "updated_at": "2024-01-19T14:40:54.674172+00:00",
+                        "created_by_id": null,
+                        "blood_type": "A+",
+                        "doctor_name": "dr. Teste 10",
+                        "gender": "MASCULINO",
+                        "height": 175.0,
+                        "weight": 78.0,
+                        "medical_release": "2023-09-01T03:00:00+00:00",
+                        "type": "ADULT",
+                        "is_deleted": false,
+                        "risk": "LOW",
+                        "urgency": "LOW",
+                        "bed_id": 10
+                    }
+                ]
+            },
+            {
+                "query": "SELECT name FROM core_patient WHERE is_active = TRUE AND risk = 'low' ORDER BY name ASC",
+                "results": []
+            },
+            {
+                "query": "SELECT name\nFROM core_patient\nWHERE is_active = TRUE AND risk = 'low'\nORDER BY name ASC;",
+                "results": []
+            }
+        ],
+        "vote_counts": [
+            {
+                "result": "QUERY_ONLY:SELECT p.*\nFROM core_patient AS p\nINNER JOIN core_bed AS b ON p.bed_id = b.id\nWHERE p.is_active = TR",
+                "count": 1
+            },
+            {
+                "result": "QUERY_ONLY:SELECT p.id, p.name\nFROM core_patient AS p\nINNER JOIN core_bed AS b ON p.bed_id = b.id\nWHERE p.is_ac",
+                "count": 1
+            },
+            {
+                "result": "RESULTS:dbd53abd2a4f155bb421ee33fbbeebb4",
+                "count": 1
+            },
+            {
+                "result": "QUERY_ONLY:SELECT name FROM core_patient WHERE is_active = TRUE AND risk = 'low' ORDER BY name ASC",
+                "count": 1
+            },
+            {
+                "result": "QUERY_ONLY:SELECT name\nFROM core_patient\nWHERE is_active = TRUE AND risk = 'low'\nORDER BY name ASC;",
+                "count": 1
+            }
+        ],
+        "majority_result": null,
+        "confidence": 0,
+        "error": "No clear majority result (all results different or all errors)."
+    },
+    {
+        "id": "test_002",
+        "question": "List the IP addresses of all registered devices.",
+        "runs": [
+            {
+                "query": "SELECT ip FROM core_equipment;",
+                "results": [
+                    {
+                        "ip": "192.168.88.253"
+                    },
+                    {
+                        "ip": "10.0.2.4"
+                    },
+                    {
+                        "ip": "10.1.1.1"
+                    },
+                    {
+                        "ip": "127.0.0.1"
+                    },
+                    {
+                        "ip": "10.0.1.7"
+                    },
+                    {
+                        "ip": "10.1.1.3"
+                    },
+                    {
+                        "ip": "11.0.0.6"
+                    },
+                    {
+                        "ip": "10.0.2.3"
+                    },
+                    {
+                        "ip": "10.0.1.5"
+                    },
+                    {
+                        "ip": "10.0.2.2"
+                    },
+                    {
+                        "ip": "192.168.88.251"
+                    }
+                ]
+            },
+            {
+                "query": "SELECT ip FROM core_equipment;",
+                "results": [
+                    {
+                        "ip": "192.168.88.253"
+                    },
+                    {
+                        "ip": "10.0.2.4"
+                    },
+                    {
+                        "ip": "10.1.1.1"
+                    },
+                    {
+                        "ip": "127.0.0.1"
+                    },
+                    {
+                        "ip": "10.0.1.7"
+                    },
+                    {
+                        "ip": "10.1.1.3"
+                    },
+                    {
+                        "ip": "11.0.0.6"
+                    },
+                    {
+                        "ip": "10.0.2.3"
+                    },
+                    {
+                        "ip": "10.0.1.5"
+                    },
+                    {
+                        "ip": "10.0.2.2"
+                    },
+                    {
+                        "ip": "192.168.88.251"
+                    }
+                ]
+            },
+            {
+                "query": "SELECT ip FROM core_equipment;",
+                "results": [
+                    {
+                        "ip": "192.168.88.253"
+                    },
+                    {
+                        "ip": "10.0.2.4"
+                    },
+                    {
+                        "ip": "10.1.1.1"
+                    },
+                    {
+                        "ip": "127.0.0.1"
+                    },
+                    {
+                        "ip": "10.0.1.7"
+                    },
+                    {
+                        "ip": "10.1.1.3"
+                    },
+                    {
+                        "ip": "11.0.0.6"
+                    },
+                    {
+                        "ip": "10.0.2.3"
+                    },
+                    {
+                        "ip": "10.0.1.5"
+                    },
+                    {
+                        "ip": "10.0.2.2"
+                    },
+                    {
+                        "ip": "192.168.88.251"
+                    }
+                ]
+            },
+            {
+                "query": "SELECT ip FROM core_equipment;",
+                "results": [
+                    {
+                        "ip": "192.168.88.253"
+                    },
+                    {
+                        "ip": "10.0.2.4"
+                    },
+                    {
+                        "ip": "10.1.1.1"
+                    },
+                    {
+                        "ip": "127.0.0.1"
+                    },
+                    {
+                        "ip": "10.0.1.7"
+                    },
+                    {
+                        "ip": "10.1.1.3"
+                    },
+                    {
+                        "ip": "11.0.0.6"
+                    },
+                    {
+                        "ip": "10.0.2.3"
+                    },
+                    {
+                        "ip": "10.0.1.5"
+                    },
+                    {
+                        "ip": "10.0.2.2"
+                    },
+                    {
+                        "ip": "192.168.88.251"
+                    }
+                ]
+            },
+            {
+                "query": "SELECT ip FROM core_equipment;",
+                "results": [
+                    {
+                        "ip": "192.168.88.253"
+                    },
+                    {
+                        "ip": "10.0.2.4"
+                    },
+                    {
+                        "ip": "10.1.1.1"
+                    },
+                    {
+                        "ip": "127.0.0.1"
+                    },
+                    {
+                        "ip": "10.0.1.7"
+                    },
+                    {
+                        "ip": "10.1.1.3"
+                    },
+                    {
+                        "ip": "11.0.0.6"
+                    },
+                    {
+                        "ip": "10.0.2.3"
+                    },
+                    {
+                        "ip": "10.0.1.5"
+                    },
+                    {
+                        "ip": "10.0.2.2"
+                    },
+                    {
+                        "ip": "192.168.88.251"
+                    }
+                ]
+            }
+        ],
+        "vote_counts": [
+            {
+                "result": "RESULTS:da516f5cbae95700a889b67519dc83c2",
+                "count": 5
+            }
+        ],
+        "majority_result": {
+            "query": "SELECT ip FROM core_equipment;",
+            "results": [
+                {
+                    "ip": "192.168.88.253"
+                },
+                {
+                    "ip": "10.0.2.4"
+                },
+                {
+                    "ip": "10.1.1.1"
+                },
+                {
+                    "ip": "127.0.0.1"
+                },
+                {
+                    "ip": "10.0.1.7"
+                },
+                {
+                    "ip": "10.1.1.3"
+                },
+                {
+                    "ip": "11.0.0.6"
+                },
+                {
+                    "ip": "10.0.2.3"
+                },
+                {
+                    "ip": "10.0.1.5"
+                },
+                {
+                    "ip": "10.0.2.2"
+                },
+                {
+                    "ip": "192.168.88.251"
+                }
+            ]
+        },
+        "confidence": 1.0
+    },
+    {
+        "id": "test_003",
+        "question": "List the IP addresses of all devices that are currently active — meaning devices that have not been deleted.",
+        "runs": [
+            {
+                "query": "SELECT ip FROM core_equipment WHERE is_deleted = false AND status NOT IN ('deleted', 'offline');",
+                "results": [
+                    {
+                        "ip": "192.168.88.253"
+                    },
+                    {
+                        "ip": "10.0.2.4"
+                    },
+                    {
+                        "ip": "10.0.2.3"
+                    },
+                    {
+                        "ip": "10.0.1.5"
+                    },
+                    {
+                        "ip": "10.0.2.2"
+                    },
+                    {
+                        "ip": "192.168.88.251"
+                    }
+                ]
+            },
+            {
+                "query": "SELECT ip FROM core_equipment WHERE is_deleted = false;",
+                "results": [
+                    {
+                        "ip": "192.168.88.253"
+                    },
+                    {
+                        "ip": "10.0.2.4"
+                    },
+                    {
+                        "ip": "10.0.2.3"
+                    },
+                    {
+                        "ip": "10.0.1.5"
+                    },
+                    {
+                        "ip": "10.0.2.2"
+                    },
+                    {
+                        "ip": "192.168.88.251"
+                    }
+                ]
+            },
+            {
+                "query": "SELECT ip FROM core_equipment WHERE is_deleted = false AND status NOT IN ('deleted', 'disabled')",
+                "results": [
+                    {
+                        "ip": "192.168.88.253"
+                    },
+                    {
+                        "ip": "10.0.2.4"
+                    },
+                    {
+                        "ip": "10.0.2.3"
+                    },
+                    {
+                        "ip": "10.0.1.5"
+                    },
+                    {
+                        "ip": "10.0.2.2"
+                    },
+                    {
+                        "ip": "192.168.88.251"
+                    }
+                ]
+            },
+            {
+                "query": "SELECT ip FROM core_equipment WHERE is_deleted = FALSE AND set_patient = TRUE;",
+                "results": []
+            },
+            {
+                "query": "SELECT DISTINCT ip FROM core_equipment WHERE is_deleted = FALSE AND status NOT IN ('deleted', 'offline')",
+                "results": [
+                    {
+                        "ip": "10.0.2.3"
+                    },
+                    {
+                        "ip": "10.0.1.5"
+                    },
+                    {
+                        "ip": "192.168.88.253"
+                    },
+                    {
+                        "ip": "192.168.88.251"
+                    },
+                    {
+                        "ip": "10.0.2.2"
+                    },
+                    {
+                        "ip": "10.0.2.4"
+                    }
+                ]
+            }
+        ],
+        "vote_counts": [
+            {
+                "result": "RESULTS:649f78ad36f2b46a039dd8982e27b630",
+                "count": 3
+            },
+            {
+                "result": "QUERY_ONLY:SELECT ip FROM core_equipment WHERE is_deleted = FALSE AND set_patient = TRUE;",
+                "count": 1
+            },
+            {
+                "result": "RESULTS:e1855565aaf64e9ddb44e952d9151183",
+                "count": 1
+            }
+        ],
+        "majority_result": {
+            "query": "SELECT ip FROM core_equipment WHERE is_deleted = false AND status NOT IN ('deleted', 'offline');",
+            "results": [
+                {
+                    "ip": "192.168.88.253"
+                },
+                {
+                    "ip": "10.0.2.4"
+                },
+                {
+                    "ip": "10.0.2.3"
+                },
+                {
+                    "ip": "10.0.1.5"
+                },
+                {
+                    "ip": "10.0.2.2"
+                },
+                {
+                    "ip": "192.168.88.251"
+                }
+            ]
+        },
+        "confidence": 0.6
+    },
+    {
+        "id": "test_004",
+        "question": "List the IP addresses, bed numbers, and department names of all active devices.",
+        "runs": [
+            {
+                "query": null,
+                "results": null,
+                "error": "Database programming error with query: 'SELECT DISTINCT e.ip AS ip, b.name AS bed_number, d.name AS department_name\nFROM core_equipment e\nINNER JOIN core_bed b ON e.bed_id = b.id\nINNER JOIN core_department d ON e.department_id = d.id\nWHERE e.is_active AND b.is_active AND NOT b.is_deleted;'. Error: {'S': 'ERROR', 'V': 'ERROR', 'C': '42703', 'M': 'column e.is_active does not exist', 'H': 'Perhaps you meant to reference the column \"b.is_active\".', 'P': '201', 'F': 'parse_relation.c', 'L': '3723', 'R': 'errorMissingColumn'}"
+            },
+            {
+                "query": null,
+                "results": null,
+                "error": "Database programming error with query: 'SELECT DISTINCT T1.ip AS ip_address, T2.name AS bed_number, T3.name AS department_name\nFROM core_equipment AS T1\nINNER JOIN core_bed AS T2 ON T1.bed_id = T2.id\nINNER JOIN core_department AS T3 ON T1.department_id = T3.id\nWHERE T1.is_active = TRUE AND T2.is_active = TRUE AND T3.is_deleted IS FALSE;'. Error: {'S': 'ERROR', 'V': 'ERROR', 'C': '42703', 'M': 'column t1.is_active does not exist', 'H': 'Perhaps you meant to reference the column \"t2.is_active\".', 'P': '228', 'F': 'parse_relation.c', 'L': '3723', 'R': 'errorMissingColumn'}"
+            },
+            {
+                "query": null,
+                "results": null,
+                "error": "Database programming error with query: 'SELECT DISTINCT T1.ip AS ip_address, T2.name AS bed_number, T3.name AS department_name\nFROM core_equipment AS T1\nINNER JOIN core_bed AS T2 ON T1.bed_id = T2.id\nINNER JOIN core_department AS T3 ON T1.department_id = T3.id\nWHERE T1.is_active = TRUE AND T2.is_active = TRUE;'. Error: {'S': 'ERROR', 'V': 'ERROR', 'C': '42703', 'M': 'column t1.is_active does not exist', 'H': 'Perhaps you meant to reference the column \"t2.is_active\".', 'P': '228', 'F': 'parse_relation.c', 'L': '3723', 'R': 'errorMissingColumn'}"
+            },
+            {
+                "query": null,
+                "results": null,
+                "error": "Database programming error with query: 'SELECT DISTINCT core_equipment.ip AS ip_address, core_bed.name AS bed_number, core_department.name AS department_name\nFROM core_equipment\nINNER JOIN core_bed ON core_equipment.bed_id = core_bed.id\nINNER JOIN core_department ON core_bed.department_id = core_department.id\nWHERE core_equipment.is_active = TRUE AND core_bed.is_active = TRUE;'. Error: {'S': 'ERROR', 'V': 'ERROR', 'C': '42703', 'M': 'column core_equipment.is_active does not exist', 'P': '278', 'F': 'parse_relation.c', 'L': '3716', 'R': 'errorMissingColumn'}"
+            },
+            {
+                "query": null,
+                "results": null,
+                "error": "Database programming error with query: 'SELECT eq.ip AS ip, bd.name AS bed_number, dept.name AS department_name\nFROM core_equipment eq\nINNER JOIN core_bed bd ON eq.bed_id = bd.id\nINNER JOIN core_department dept ON eq.department_id = dept.id\nWHERE eq.is_active = TRUE;'. Error: {'S': 'ERROR', 'V': 'ERROR', 'C': '42703', 'M': 'column eq.is_active does not exist', 'H': 'Perhaps you meant to reference the column \"bd.is_active\".', 'P': '208', 'F': 'parse_relation.c', 'L': '3723', 'R': 'errorMissingColumn'}"
+            }
+        ],
+        "vote_counts": [
+            {
+                "result": "ERROR:Database programming error with query: 'SELECT DISTINCT e.ip AS ip, b.name AS bed_number, d.name AS department_name\nFROM core_equipment e\nINNER JOIN core_bed b ON e.bed_id = b.id\nINNER JOIN core_department d ON e.department_id = d.id\nWHERE e.is_active AND b.is_active AND NOT b.is_deleted;'. Error: {'S': 'ERROR', 'V': 'ERROR', 'C': '42703', 'M': 'column e.is_active does not exist', 'H': 'Perhaps you meant to reference the column \"b.is_active\".', 'P': '201', 'F': 'parse_relation.c', 'L': '3723', 'R': 'errorMissingColumn'}",
+                "count": 1
+            },
+            {
+                "result": "ERROR:Database programming error with query: 'SELECT DISTINCT T1.ip AS ip_address, T2.name AS bed_number, T3.name AS department_name\nFROM core_equipment AS T1\nINNER JOIN core_bed AS T2 ON T1.bed_id = T2.id\nINNER JOIN core_department AS T3 ON T1.department_id = T3.id\nWHERE T1.is_active = TRUE AND T2.is_active = TRUE AND T3.is_deleted IS FALSE;'. Error: {'S': 'ERROR', 'V': 'ERROR', 'C': '42703', 'M': 'column t1.is_active does not exist', 'H': 'Perhaps you meant to reference the column \"t2.is_active\".', 'P': '228', 'F': 'parse_relation.c', 'L': '3723', 'R': 'errorMissingColumn'}",
+                "count": 1
+            },
+            {
+                "result": "ERROR:Database programming error with query: 'SELECT DISTINCT T1.ip AS ip_address, T2.name AS bed_number, T3.name AS department_name\nFROM core_equipment AS T1\nINNER JOIN core_bed AS T2 ON T1.bed_id = T2.id\nINNER JOIN core_department AS T3 ON T1.department_id = T3.id\nWHERE T1.is_active = TRUE AND T2.is_active = TRUE;'. Error: {'S': 'ERROR', 'V': 'ERROR', 'C': '42703', 'M': 'column t1.is_active does not exist', 'H': 'Perhaps you meant to reference the column \"t2.is_active\".', 'P': '228', 'F': 'parse_relation.c', 'L': '3723', 'R': 'errorMissingColumn'}",
+                "count": 1
+            },
+            {
+                "result": "ERROR:Database programming error with query: 'SELECT DISTINCT core_equipment.ip AS ip_address, core_bed.name AS bed_number, core_department.name AS department_name\nFROM core_equipment\nINNER JOIN core_bed ON core_equipment.bed_id = core_bed.id\nINNER JOIN core_department ON core_bed.department_id = core_department.id\nWHERE core_equipment.is_active = TRUE AND core_bed.is_active = TRUE;'. Error: {'S': 'ERROR', 'V': 'ERROR', 'C': '42703', 'M': 'column core_equipment.is_active does not exist', 'P': '278', 'F': 'parse_relation.c', 'L': '3716', 'R': 'errorMissingColumn'}",
+                "count": 1
+            },
+            {
+                "result": "ERROR:Database programming error with query: 'SELECT eq.ip AS ip, bd.name AS bed_number, dept.name AS department_name\nFROM core_equipment eq\nINNER JOIN core_bed bd ON eq.bed_id = bd.id\nINNER JOIN core_department dept ON eq.department_id = dept.id\nWHERE eq.is_active = TRUE;'. Error: {'S': 'ERROR', 'V': 'ERROR', 'C': '42703', 'M': 'column eq.is_active does not exist', 'H': 'Perhaps you meant to reference the column \"bd.is_active\".', 'P': '208', 'F': 'parse_relation.c', 'L': '3723', 'R': 'errorMissingColumn'}",
+                "count": 1
+            }
+        ],
+        "majority_result": null,
+        "confidence": 0,
+        "error": "No clear majority result (all results different or all errors)."
+    },
+    {
+        "id": "test_005",
+        "question": "For all active devices in the 'LAB' department, show the IP address, bed, department, and the date and time of the latest real-time update, sorted by most recent first.",
+        "runs": [
+            {
+                "query": null,
+                "results": null,
+                "error": "Database programming error with query: 'SELECT\n  e.ip AS ip_address,\n  b.name AS bed,\n  d.name AS department,\n  MAX(cr.created_at) AS latest_update\nFROM\n  core_equipment e\nINNER JOIN\n  core_department d ON e.department_id = d.id\nLEFT JOIN\n  core_monitoringrealtime cr ON e.id = cr.equipment_id AND b.id = cr.bed_id AND p.id = cr.patient_id\nWHERE\n  d.name = 'LAB'\n  AND e.status NOT IN ('offline', 'deleted')\nGROUP BY\n  e.ip,\n  b.name,\n  d.name\nORDER BY\n  latest_update DESC;'. Error: {'S': 'ERROR', 'V': 'ERROR', 'C': '42P01', 'M': 'missing FROM-clause entry for table \"b\"', 'P': '259', 'F': 'parse_relation.c', 'L': '3651', 'R': 'errorMissingRTE'}"
+            },
+            {
+                "query": null,
+                "results": null,
+                "error": "Database programming error with query: 'SELECT T1.ip, T2.name AS bed, T3.name AS department, MAX(T4.created_at) AS latest_update\nFROM core_equipment AS T1\nINNER JOIN core_bed AS T2 ON T1.bed_id = T2.id\nINNER JOIN core_department AS T3 ON T1.department_id = T3.id\nINNER JOIN core_monitoringrealtime AS T4 ON T1.id = T4.equipment_id\nWHERE T3.name = 'LAB' AND T1.is_active AND T2.is_active AND T4.is_finished IS NOT TRUE\nGROUP BY T1.ip, T2.id, T3.id\nORDER BY latest_update DESC'. Error: {'S': 'ERROR', 'V': 'ERROR', 'C': '42703', 'M': 'column t1.is_active does not exist', 'H': 'Perhaps you meant to reference the column \"t2.is_active\".', 'P': '318', 'F': 'parse_relation.c', 'L': '3723', 'R': 'errorMissingColumn'}"
+            },
+            {
+                "query": null,
+                "results": null,
+                "error": "Database programming error with query: 'SELECT T1.ip, T2.name AS bed, T3.name AS department, MAX(T4.created_at) AS latest_update\nFROM core_equipment AS T1\nINNER JOIN core_bed AS T2 ON T1.bed_id = T2.id\nINNER JOIN core_department AS T3 ON T2.department_id = T3.id\nLEFT JOIN core_monitoringrealtime AS T4 ON T1.id = T4.equipment_id AND T2.id = T4.bed_id\nWHERE T3.name = 'LAB' AND T1.is_active = TRUE AND T2.is_active = TRUE\nGROUP BY T1.ip, T2.id, T3.id\nORDER BY MAX(T4.created_at) DESC;'. Error: {'S': 'ERROR', 'V': 'ERROR', 'C': '42703', 'M': 'column t1.is_active does not exist', 'H': 'Perhaps you meant to reference the column \"t2.is_active\".', 'P': '339', 'F': 'parse_relation.c', 'L': '3723', 'R': 'errorMissingColumn'}"
+            },
+            {
+                "query": null,
+                "results": null,
+                "error": "Database programming error with query: 'SELECT T1.ip, T2.name AS bed_name, T3.name AS department_name, MAX(T4.created_at) AS latest_update\nFROM core_equipment AS T1\nINNER JOIN core_bed AS T2 ON T1.bed_id = T2.id\nINNER JOIN core_department AS T3 ON T2.department_id = T3.id\nINNER JOIN core_monitoringrealtime AS T4 ON T1.id = T4.equipment_id\nWHERE T3.name = 'LAB' AND T1.is_active = TRUE AND T2.is_active = TRUE\nGROUP BY T1.ip, T2.name, T3.name\nORDER BY latest_update DESC'. Error: {'S': 'ERROR', 'V': 'ERROR', 'C': '42703', 'M': 'column t1.is_active does not exist', 'H': 'Perhaps you meant to reference the column \"t2.is_active\".', 'P': '328', 'F': 'parse_relation.c', 'L': '3723', 'R': 'errorMissingColumn'}"
+            },
+            {
+                "query": null,
+                "results": null,
+                "error": "Database programming error with query: 'SELECT\n    eq.ip AS ip,\n    bd.name AS bed,\n    dp.name AS department,\n    MAX(mrt.created_at) AS latest_update\nFROM\n    core_equipment eq\nINNER JOIN\n    core_department dp ON eq.department_id = dp.id AND dp.name = 'LAB' AND eq.is_active\nINNER JOIN\n    core_monitoringrealtime mrt ON eq.id = mrt.equipment_id AND eq.is_active\nINNER JOIN\n    core_bed bd ON eq.bed_id = bd.id AND bd.is_active\nWHERE\n    eq.is_deleted IS NOT TRUE\nGROUP BY\n    eq.ip,\n    bd.name,\n    dp.name\nORDER BY\n    latest_update DESC'. Error: {'S': 'ERROR', 'V': 'ERROR', 'C': '42703', 'M': 'column eq.is_active does not exist', 'P': '226', 'F': 'parse_relation.c', 'L': '3716', 'R': 'errorMissingColumn'}"
+            }
+        ],
+        "vote_counts": [
+            {
+                "result": "ERROR:Database programming error with query: 'SELECT\n  e.ip AS ip_address,\n  b.name AS bed,\n  d.name AS department,\n  MAX(cr.created_at) AS latest_update\nFROM\n  core_equipment e\nINNER JOIN\n  core_department d ON e.department_id = d.id\nLEFT JOIN\n  core_monitoringrealtime cr ON e.id = cr.equipment_id AND b.id = cr.bed_id AND p.id = cr.patient_id\nWHERE\n  d.name = 'LAB'\n  AND e.status NOT IN ('offline', 'deleted')\nGROUP BY\n  e.ip,\n  b.name,\n  d.name\nORDER BY\n  latest_update DESC;'. Error: {'S': 'ERROR', 'V': 'ERROR', 'C': '42P01', 'M': 'missing FROM-clause entry for table \"b\"', 'P': '259', 'F': 'parse_relation.c', 'L': '3651', 'R': 'errorMissingRTE'}",
+                "count": 1
+            },
+            {
+                "result": "ERROR:Database programming error with query: 'SELECT T1.ip, T2.name AS bed, T3.name AS department, MAX(T4.created_at) AS latest_update\nFROM core_equipment AS T1\nINNER JOIN core_bed AS T2 ON T1.bed_id = T2.id\nINNER JOIN core_department AS T3 ON T1.department_id = T3.id\nINNER JOIN core_monitoringrealtime AS T4 ON T1.id = T4.equipment_id\nWHERE T3.name = 'LAB' AND T1.is_active AND T2.is_active AND T4.is_finished IS NOT TRUE\nGROUP BY T1.ip, T2.id, T3.id\nORDER BY latest_update DESC'. Error: {'S': 'ERROR', 'V': 'ERROR', 'C': '42703', 'M': 'column t1.is_active does not exist', 'H': 'Perhaps you meant to reference the column \"t2.is_active\".', 'P': '318', 'F': 'parse_relation.c', 'L': '3723', 'R': 'errorMissingColumn'}",
+                "count": 1
+            },
+            {
+                "result": "ERROR:Database programming error with query: 'SELECT T1.ip, T2.name AS bed, T3.name AS department, MAX(T4.created_at) AS latest_update\nFROM core_equipment AS T1\nINNER JOIN core_bed AS T2 ON T1.bed_id = T2.id\nINNER JOIN core_department AS T3 ON T2.department_id = T3.id\nLEFT JOIN core_monitoringrealtime AS T4 ON T1.id = T4.equipment_id AND T2.id = T4.bed_id\nWHERE T3.name = 'LAB' AND T1.is_active = TRUE AND T2.is_active = TRUE\nGROUP BY T1.ip, T2.id, T3.id\nORDER BY MAX(T4.created_at) DESC;'. Error: {'S': 'ERROR', 'V': 'ERROR', 'C': '42703', 'M': 'column t1.is_active does not exist', 'H': 'Perhaps you meant to reference the column \"t2.is_active\".', 'P': '339', 'F': 'parse_relation.c', 'L': '3723', 'R': 'errorMissingColumn'}",
+                "count": 1
+            },
+            {
+                "result": "ERROR:Database programming error with query: 'SELECT T1.ip, T2.name AS bed_name, T3.name AS department_name, MAX(T4.created_at) AS latest_update\nFROM core_equipment AS T1\nINNER JOIN core_bed AS T2 ON T1.bed_id = T2.id\nINNER JOIN core_department AS T3 ON T2.department_id = T3.id\nINNER JOIN core_monitoringrealtime AS T4 ON T1.id = T4.equipment_id\nWHERE T3.name = 'LAB' AND T1.is_active = TRUE AND T2.is_active = TRUE\nGROUP BY T1.ip, T2.name, T3.name\nORDER BY latest_update DESC'. Error: {'S': 'ERROR', 'V': 'ERROR', 'C': '42703', 'M': 'column t1.is_active does not exist', 'H': 'Perhaps you meant to reference the column \"t2.is_active\".', 'P': '328', 'F': 'parse_relation.c', 'L': '3723', 'R': 'errorMissingColumn'}",
+                "count": 1
+            },
+            {
+                "result": "ERROR:Database programming error with query: 'SELECT\n    eq.ip AS ip,\n    bd.name AS bed,\n    dp.name AS department,\n    MAX(mrt.created_at) AS latest_update\nFROM\n    core_equipment eq\nINNER JOIN\n    core_department dp ON eq.department_id = dp.id AND dp.name = 'LAB' AND eq.is_active\nINNER JOIN\n    core_monitoringrealtime mrt ON eq.id = mrt.equipment_id AND eq.is_active\nINNER JOIN\n    core_bed bd ON eq.bed_id = bd.id AND bd.is_active\nWHERE\n    eq.is_deleted IS NOT TRUE\nGROUP BY\n    eq.ip,\n    bd.name,\n    dp.name\nORDER BY\n    latest_update DESC'. Error: {'S': 'ERROR', 'V': 'ERROR', 'C': '42703', 'M': 'column eq.is_active does not exist', 'P': '226', 'F': 'parse_relation.c', 'L': '3716', 'R': 'errorMissingColumn'}",
+                "count": 1
+            }
+        ],
+        "majority_result": null,
+        "confidence": 0,
+        "error": "No clear majority result (all results different or all errors)."
+    }
+]

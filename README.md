@@ -68,6 +68,40 @@ npm start
 4. Os resultados serão mostrados em uma tabela abaixo
 5. Você pode copiar a query SQL ou exportar os resultados para CSV
 
+## Sistema de Votação por Maioria
+
+Para lidar com possíveis inconsistências nas respostas do modelo, foi implementado um sistema de votação por maioria que executa cada pergunta várias vezes e seleciona o resultado mais frequente.
+
+### Como funciona
+
+1. Cada pergunta é enviada ao modelo múltiplas vezes (padrão: 5 vezes)
+2. **Os resultados reais (dados da tabela) retornados por cada consulta são comparados**, não apenas o texto da consulta SQL
+3. Se algum resultado aparecer pelo menos duas vezes, ele é selecionado como correto
+4. Se todos os resultados forem diferentes, o sistema marca o resultado como inconclusivo
+5. Resultados sem erros são preferidos em relação a resultados com erros
+
+### Executando os testes com votação por maioria
+
+Para executar o sistema de votação por maioria:
+
+```bash
+python run_majority_vote.py
+
+# Com opções customizadas:
+python run_majority_vote.py --runs 10 --timeout 120
+```
+
+Os resultados serão salvos em `backend/majority_vote_results.json`. Para analisar os resultados:
+
+```bash
+python analyze_results.py
+
+# Para exibir resultados detalhados:
+python analyze_results.py --verbose
+```
+
+Para mais informações, consulte o arquivo `backend/README_MAJORITY_VOTE.md`.
+
 ## Tecnologias utilizadas
 
 - Frontend: React, Tailwind CSS
