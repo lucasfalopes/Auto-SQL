@@ -1,110 +1,134 @@
 # Auto-SQL
 
-Aplicação web que permite gerar queries SQL a partir de perguntas em linguagem natural usando IA.
+Web application that allows generating SQL queries from natural language questions using AI.
 
 <div align="center">
-  <img src="inicial-page.png" alt="Página inicial da aplicação" width="400" />
+
+  <img src="inicial-page.png" alt="Página inicial da aplicação" width="400" />
+
 </div>
+## Prerequisites
 
-## Pré-requisitos
+  - Python 3.8+
+  - Node.js 16+
+  - PostgreSQL
+  - Ollama (for the AI model)
 
-- Python 3.8+
-- Node.js 16+
-- PostgreSQL
-- Ollama (para o modelo de IA)
+## Installation
 
-## Instalação
+1.  Clone the repository:
 
-1. Clone o repositório:
+<!-- end list -->
+
 ```bash
-git clone https://github.com/seu-usuario/chatbot-db.git
+git clone https://github.com/your-user/chatbot-db.git
 cd chatbot-db
 ```
 
-2. Configure o banco de dados PostgreSQL:
-- Crie um banco de dados chamado `pagila`
-- Importe o schema do banco de dados (você pode usar o arquivo `pagila-schema.sql`)
+2.  Set up the PostgreSQL database:
 
-3. Instale as dependências do backend:
+<!-- end list -->
+
+  - Create a database named `pagila`
+  - Import the database schema (you can use the `pagila-schema.sql` file)
+
+<!-- end list -->
+
+3.  Install backend dependencies:
+
+<!-- end list -->
+
 ```bash
 cd backend
 python -m venv venv
-source venv/bin/activate  # No Windows: venv\Scripts\activate
+source venv/bin/activate  # On Windows: venv\Scripts\activate
 pip install -r requirements.txt
 ```
 
-4. Instale as dependências do frontend:
+4.  Install frontend dependencies:
+
+<!-- end list -->
+
 ```bash
 cd ../frontend
 npm install
 ```
 
-5. Configure as variáveis de ambiente:
-- Copie o arquivo `.env.example` para `.env` no diretório backend
-- Ajuste as configurações do banco de dados no arquivo `.env`
+5.  Configure environment variables:
 
-## Executando a aplicação
+<!-- end list -->
 
-1. Inicie o servidor backend:
+  - Copy the `.env.example` file to `.env` in the backend directory
+  - Adjust the database settings in the `.env` file
+
+## Running the application
+
+1.  Start the backend server:
+
+<!-- end list -->
+
 ```bash
 cd backend
-source venv/bin/activate  # No Windows: venv\Scripts\activate
+source venv/bin/activate  # On Windows: venv\Scripts\activate
 python main.py
 ```
 
-2. Em outro terminal, inicie o servidor frontend:
+2.  In another terminal, start the frontend server:
+
+<!-- end list -->
+
 ```bash
 cd frontend
 npm start
 ```
 
-3. Acesse a aplicação em `http://localhost:3000`
+3.  Access the application at `http://localhost:3000`
 
-## Uso
+## Usage
 
-1. Digite sua pergunta em linguagem natural no campo de texto
-2. Clique em "Ask" para gerar a query SQL
-3. A query gerada será exibida e executada automaticamente
-4. Os resultados serão mostrados em uma tabela abaixo
-5. Você pode copiar a query SQL ou exportar os resultados para CSV
+1.  Type your natural language question into the text field
+2.  Click "Ask" to generate the SQL query
+3.  The generated query will be displayed and executed automatically
+4.  The results will be shown in a table below
+5.  You can copy the SQL query or export the results to CSV
 
-## Sistema de Votação por Maioria
+## Majority Vote System
 
-Para lidar com possíveis inconsistências nas respostas do modelo, foi implementado um sistema de votação por maioria que executa cada pergunta várias vezes e seleciona o resultado mais frequente.
+To handle potential inconsistencies in the model's responses, a majority vote system was implemented that executes each question multiple times and selects the most frequent result.
 
-### Como funciona
+### How it works
 
-1. Cada pergunta é enviada ao modelo múltiplas vezes (padrão: 5 vezes)
-2. **Os resultados reais (dados da tabela) retornados por cada consulta são comparados**, não apenas o texto da consulta SQL
-3. Se algum resultado aparecer pelo menos duas vezes, ele é selecionado como correto
-4. Se todos os resultados forem diferentes, o sistema marca o resultado como inconclusivo
-5. Resultados sem erros são preferidos em relação a resultados com erros
+1.  Each question is sent to the model multiple times (default: 5 times)
+2.  **The actual results (table data) returned by each query are compared**, not just the SQL query text
+3.  If any result appears at least twice, it is selected as correct
+4.  If all results are different, the system marks the result as inconclusive
+5.  Results without errors are preferred over results with errors
 
-### Executando os testes com votação por maioria
+### Running tests with majority vote
 
-Para executar o sistema de votação por maioria:
+To run the majority vote system:
 
 ```bash
 python run_majority_vote.py
 
-# Com opções customizadas:
+# With custom options:
 python run_majority_vote.py --runs 10 --timeout 120
 ```
 
-Os resultados serão salvos em `backend/majority_vote_results.json`. Para analisar os resultados:
+The results will be saved in `backend/majority_vote_results.json`. To analyze the results:
 
 ```bash
 python analyze_results.py
 
-# Para exibir resultados detalhados:
+# To display detailed results:
 python analyze_results.py --verbose
 ```
 
-Para mais informações, consulte o arquivo `backend/README_MAJORITY_VOTE.md`.
+For more information, see the `backend/README_MAJORITY_VOTE.md` file.
 
-## Tecnologias utilizadas
+## Technologies used
 
-- Frontend: React, Tailwind CSS
-- Backend: Python, FastAPI
-- Banco de dados: PostgreSQL
-- IA: Ollama com modelo Llama 3 
+  - Frontend: React, Tailwind CSS
+  - Backend: Python, FastAPI
+  - Database: PostgreSQL
+  - AI: Ollama with Llama 3 model
